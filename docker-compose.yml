@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.17.1
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/alert.rules:/etc/prometheus/alert.rules
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/volumes/data:/prometheus
+
+  node-exporter:
+    image: prom/node-exporter:v0.18.1
+
+  grafana:
+    image: grafana/grafana:6.7.2
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/volumes/data:/var/lib/grafana
