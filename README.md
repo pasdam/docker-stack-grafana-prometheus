@@ -1,7 +1,14 @@
 # Prometheus-Grafana metrics stack
 
-This repo contains a basic setup of a Grafana instance using Prometheus to
-publish metrics.
+This repo contains a basic setup of a [Grafana](https://grafana.com/) instance
+using [Prometheus](https://prometheus.io/) as data source.
+
+Metrics are exposed to Prometheus using
+[Telegraf](https://www.influxdata.com/time-series-platform/telegraf/).
+
+There's also an alterative agent,
+[statsD-exporter](https://github.com/prometheus/statsd_exporter), to expose
+metrics.
 
 ## Setup
 
@@ -20,7 +27,7 @@ Next step it to add a data source to pull metrics from. Go to
 specify is the url, [http://prometheus:9090](http://prometheus:9090), leave the
 rest as default and click on `Save and test`.
 
-At this point it's possible to import Prometheus default dashboards, openind the
+At this point it's possible to import Prometheus default dashboards, opening the
 newly created data source, and click on the import button on each row in the
 `Dashboards` tab.
 
